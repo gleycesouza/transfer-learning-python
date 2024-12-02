@@ -1,27 +1,55 @@
-<h1>
-    <a href="https://www.dio.me/">
-     <img align="center" width="40px" src="https://hermes.digitalinnovation.one/assets/diome/logo-minimized.png"></a>
-    <span> Profiles README DIO</span>
-</h1>
+# Treinamento de Redes Neurais com Transfer Learning
 
-## Sobre o Projeto
-Página desenvolvida para fins didáticos para o curso **Contribuindo em um Projeto Open Source no GitHub** da [Digital Innovation One](https://www.dio.me/). Lembre-se de que Markdown é mais voltado para a documentação e apresentação de texto formatado, enquanto a remoção de bugs normalmente envolve a compreensão detalhada do código e o uso de ferramentas de desenvolvimento adequadas à linguagem de programação específica.
+Este projeto consiste no treinamento de redes neurais utilizando Transfer Learning, baseado no modelo **VGG16**. Ele foi desenvolvido como parte da formação **BairesDev - Machine Learning Practitioner**, oferecida pela **DIO**.
 
-[![Preview](https://img.shields.io/badge/Preview-000?style=for-the-badge&logo=github&logoColor=30A3DC)](https://digitalinnovationone.github.io/dio-lab-open-source/)
+---
 
-```
-docs/
-├── assets/
-│   ├── css/
-│   │   └── styles.css
-│   └── js/
-│       └── scripts.js
-├── favicon.ico
-├── index.html
-└── README.md
-```
+## Objetivo
 
-## Tecnologias
-![HTML](https://img.shields.io/badge/HTML-000?style=for-the-badge&logo=html5&logoColor=30A3DC)
-![CSS](https://img.shields.io/badge/CSS-000?style=for-the-badge&logo=css3&logoColor=E94D5F)
-![JavaScript](https://img.shields.io/badge/JavaScript-000?style=for-the-badge&logo=javascript&logoColor=30A3DC)
+Demonstrar o uso de Transfer Learning em um problema de classificação de imagens, aplicando ajustes em um modelo pré-treinado para adequá-lo ao conjunto de dados utilizado.
+
+---
+
+## Etapas do Projeto
+
+1. **Preparação dos Dados**  
+   - Utilização do dataset *Cats vs Dogs* fornecido pelo TensorFlow Datasets (TFDS).  
+   - Preprocessamento das imagens:
+     - Redimensionamento para 64x64 pixels.
+     - Normalização dos valores dos pixels.
+     - Conversão de rótulos para formato *one-hot*.
+
+2. **Divisão do Dataset**  
+   - Separação dos dados em conjuntos de treino, validação e teste (70%, 15%, 15% respectivamente).  
+   - Organização em lotes para otimização do treinamento.
+
+3. **Modelo Utilizado**  
+   - Base: **VGG16** pré-treinada no ImageNet.  
+   - Ajustes:
+     - Camada de saída personalizada para número de classes do dataset.
+     - Camadas convolucionais congeladas para preservar os pesos pré-treinados.
+     - Treinamento focado na nova camada de classificação.
+
+4. **Treinamento do Modelo**  
+   - Configuração:
+     - Função de perda: *categorical_crossentropy*.  
+     - Otimizador: Adam.  
+     - Métrica: acurácia.
+   - Treinamento em 10 épocas com *batch size* de 128.  
+   - Avaliação em dados de validação.
+
+5. **Avaliação e Resultados**  
+   - Análise das métricas de desempenho (perda e acurácia) em gráficos para entender o comportamento do modelo ao longo das épocas.
+
+---
+
+## Tecnologias e Ferramentas
+
+- **Linguagem**: Python  
+- **Bibliotecas**:  
+  - TensorFlow  
+  - NumPy  
+  - Matplotlib  
+- **Dataset**: TensorFlow Datasets (*Cats vs Dogs*)
+
+---
